@@ -1,5 +1,6 @@
 "use client"
 import useCart from "../(store)/store"
+import { useRouter } from 'next/router'
 
 export default function ProductPage(props) {
     const { searchParams } = props
@@ -10,8 +11,10 @@ export default function ProductPage(props) {
 
     console.log(productInfo)
 
+    const router = useRouter()
+
     if (!product?.name) {
-        window.location.href = '/'
+        router.push('/')
     }
 
     function handleAddToCart() {
